@@ -32,7 +32,7 @@ var requestHandler = function(request, response) {
   }
   else{
     response.writeHead(404, {'Content-Type': 'text/plain'});
-    response.end('Resource not found');
+    response.end('Bad gateway error');
   }
 
 };

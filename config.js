@@ -4,6 +4,6 @@
 
 module.exports = {
   db: {
-    uri: 'mongodb+srv://bootcamp:Bootcamp2DBUser@cen3031-dg-vg1ph.mongodb.net/test?retryWrites=true&w=majority' //place the URI of your mongo database here.
+    uri: 'mongodb+srv://bootcamp:5NEZ8XMnYU7Q6BtQ@cen3031-dg-vg1ph.mongodb.net/test?retryWrites=true&w=majority', //place the URI of your mongo database here.
   }
 };

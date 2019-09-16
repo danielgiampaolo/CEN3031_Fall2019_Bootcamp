@@ -12,7 +12,7 @@ var fs = require('fs'),
 /* Connect to your database using mongoose - remember to keep your key secret*/
 //see https://mongoosejs.com/docs/connections.html
 //See https://docs.atlas.mongodb.com/driver-connection/
-mongoose.connect(config.db.uri);
+mongoose.connect(config.db.uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 /* 
   Instantiate a mongoose model for each listing object in the JSON file, 
@@ -21,14 +21,27 @@ mongoose.connect(config.db.uri);
 
   Remember that we needed to read in a file like we did in Bootcamp Assignment #1.
  */
+var listingData;
 
-new Listing({
-  name: listing.name, 
-  code: listing.code
-}).save(function(err, listing){
-  should.not.exist(err);
-  id = listing._id;
-  done();
+fs.readFile('listings.json', 'utf8', function(err, data) {
+  //Check for errors
+  if (err) throw err;
+  listingData = JSON.parse(data)['entries'];
+  //console.log(listingData);
+  for(var entry in listingData){
+    var listEntry = listingData[entry];
+    new Listing(listEntry).save(function(err, listEntry){
+      if(err){
+        //console.log(err.errmsg);
+      }
+      else{
+        //console.log(listEntry.name + ' saved to MongoDB\n');
+      }
+    });
+  }
+});
+
+
 
 
 /*  

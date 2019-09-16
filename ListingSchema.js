@@ -8,10 +8,10 @@ var mongoose = require('mongoose'),
   */
 var listingSchema = new Schema({
   "code": {
-    "type": "String", "required":"true", "unique":"true"
+    "type": "String", "required":"true"
   },
   "name": {
-    "type": "String", "required":"true", "unique":"true" 
+    "type": "String", "required":"true" 
   },
   "coordinates": {
     "latitude": {
@@ -23,6 +23,12 @@ var listingSchema = new Schema({
   },
   "address": {
     "type": "String"
+  },
+  "created_at": {
+    "type": "Date"
+  },
+  "updated_at": {
+    "type": "Date"
   }
 });
 
